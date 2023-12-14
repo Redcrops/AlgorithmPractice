@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+#include <string.h>
 #define NUM_SIZE 5
-#define RANGE_NUM 10
+#define RANGE_NUM 20
 #define RET_SIZE 2
 void sum_Num(int array[NUM_SIZE], int target, int ret[RET_SIZE])
 {
@@ -26,8 +27,10 @@ void sum_Num(int array[NUM_SIZE], int target, int ret[RET_SIZE])
 int main()
 {
     int array[NUM_SIZE];
+    // memset(array, 0, sizeof(array));
     int target;
     int ret[RET_SIZE];
+    memset(array, 0, sizeof(ret));
     srand(time(NULL));
     for (int idx = 0; idx < NUM_SIZE; idx++)
     {
