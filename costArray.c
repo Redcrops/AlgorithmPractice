@@ -7,23 +7,29 @@
 // 不需要考虑数组中超出新长度后面的元素。
 #include <stdio.h>
 #define BUFFER_SIZE 10
-int main()
+int inplaceArray(int *array, int arraySize)
 {
-    int array[BUFFER_SIZE] = {1, 1, 1, 2, 2, 3, 4, 4, 5, 6};
-    // memset(array, 0, sizeof(array));
     int left = 1;
-    for (int right = 1; right < BUFFER_SIZE; right++)
+    for (int right = 1; right < arraySize; right++)
     {
-
         if (array[right] > array[right - 1])
         {
             array[left] = array[right];
             left++;
         }
-    }
-    for (int idx = 0; idx < left; idx++)
+        }
+    return left;
+}
+int main()
+{
+    int array[BUFFER_SIZE] = {1, 1, 1, 2, 2, 3, 4, 4, 5, 6};
+    // memset(array, 0, sizeof(array));
+
+    int newSize = inplaceArray(array, BUFFER_SIZE);
+    for (int idx = 0; idx < newSize; idx++)
     {
-        printf("array[%d]=%d\n", idx, array[idx]);
+        printf("array[%d]=%d\t", idx, array[idx]);
+        printf("\n");
     }
 
     return 0;
