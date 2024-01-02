@@ -1,5 +1,6 @@
 #include <stdio.h>
 #define BUFFER_SIZE 7
+#if 0
 void insertSort(int *array, int numSize)
 {
     int copy = 0;
@@ -20,15 +21,40 @@ void insertSort(int *array, int numSize)
         array[left + 1] = copy;
     }
 }
-
-int main()
+#endif
+void insertSort_01(int *array, int numSize)
 {
-    int array[BUFFER_SIZE] = {1, 30, 24, 5, 58, 12, 39};
-    insertSort(array, BUFFER_SIZE);
-    for (int idx = 0; idx < BUFFER_SIZE; idx++)
+    if (array == NULL)
+    {
+        return;
+    }
+    int copy = 0;
+    int left = 0;
+    for (int right = 1; right < numSize; right++)
+    {
+        copy = array[right];
+        left = right - 1;
+        while (array[left] > copy && left >= 0)
+        {
+            array[left + 1] = array[left];
+            left--;
+        }
+        array[left + 1] = copy;
+    }
+}
+int printArray(int *array, int arraySize)
+{
+    for (int idx = 0; idx < arraySize; idx++)
     {
         printf("%d\t", array[idx]);
     }
     printf("\n");
+}
+
+int main()
+{
+    int array[BUFFER_SIZE] = {1, 30, 24, 5, 58, 12, 39};
+    insertSort_01(array, BUFFER_SIZE);
+    printArray(array, BUFFER_SIZE);
     return 0;
 }

@@ -23,6 +23,10 @@ int printArray(int *array, int arraySize)
 /*时间复杂度：o(n²)*/
 void bubbleSort01(int *array, int arraySize)
 {
+    if (array == NULL)
+    {
+        return;
+    }
     for (int end = arraySize; end > 0; end--)
     {
         for (int begin = 1; begin < arraySize; begin++)
